@@ -1,2 +1,2 @@
-# Night-Writer-Project
+# Night Writer
 Braille to text translator project
