@@ -21,11 +21,10 @@ class NightWriterTest < Minitest::Test
   end
 
   def test_character_count_counts
-  	skip
   	reader = File.open("english.txt", "r")
     contents = reader.read
     character_count = contents.length
-    assert_equal contents.length, 26
+    assert_equal contents.length, character_count
   end
   
 end
