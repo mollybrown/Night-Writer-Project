@@ -5,18 +5,19 @@ class NightWriter
 
 	def file_reader
 		reader = File.open("english.txt", "r")
-		@contents = reader.read
+		@@contents = reader.read
 		#puts @contents
 	end
 
-	# def file_writer
-	# 	writer = File.open("braille.txt", "w")
-	# 	contents = writer.write
-	# 	puts contents
-	# end
+	def file_writer
+		writer = File.open("braille.txt", "w")
+		contents = writer.write
+		writer.close
+		#puts contents
+	end
 
 	def character_counter
-		@@character_count = @contents.length #need class var to make it avaialble w/i seperate runner class
+		@@character_count = @@contents.length #need class var to make it avaialble w/i seperate runner class
 		#puts @@character_count
 	end
 
