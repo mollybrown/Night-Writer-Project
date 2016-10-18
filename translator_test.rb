@@ -9,10 +9,17 @@ class TranslatorTest < Minitest::Test
     assert TranslatorTest
   end
 
-  def test_it_imports_string_from_english_txt
+  def test_it_imports_contents_string
+  	skip
     translator = Translator.new
-    translator.import_english_txt_string
-    assert_kind_of String, raw_english
+    contents = @@contents
+    assert_kind_of String, contents
   end
 
+  def test_it_puts_zero_index_of_key_for_contents
+  	translator = Translator.new
+  	braille = translator.translate_text_to_braille
+  	assert kind_of String, braille
+  end
+  
 end
