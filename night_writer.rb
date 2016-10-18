@@ -1,7 +1,7 @@
 class NightWriter
 
 	attr_accessor :contents
-								:character_count
+				  :character_count
 
 	def file_reader
 		reader = File.open("english.txt", "r")
