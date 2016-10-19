@@ -1,10 +1,14 @@
 require 'pry'
-require './night_writer.rb'
+require './lib/night_writer.rb'
 
-class Translator < NightWriter
+class Translator
 
-  attr_accessor :contents
-                :contents_array
+  #attr_accessor :contents
+                #:contents_array
+
+  attr_reader :l1_transform,
+              :l2_transform,
+              :l3_transform
 
   def initialize
     # @num_key = {
@@ -244,7 +248,7 @@ class Translator < NightWriter
   end                   
 
   def translate_text_to_braille_l1
-    @@contents.chomp.each_char do |i| #for each individual character in text sample....
+    @incoming_text.chomp.each_char do |i| #for each individual character in text sample....
       @l1_transform = @char_key_l1.fetch(i)
       print "#{@l1_transform.join}"
     end 
@@ -252,7 +256,7 @@ class Translator < NightWriter
   end
 
   def translate_text_to_braille_l2
-    @@contents.chomp.each_char do |i|
+    @incoming_text.chomp.each_char do |i|
       @l2_transform = @char_key_l2.fetch(i)
       print "#{@l2_transform.join}"
     end
@@ -260,12 +264,17 @@ class Translator < NightWriter
   end
 
   def translate_text_to_braille_l3
-    @@contents.chomp.each_char do |i|
+    @incoming_text.chomp.each_char do |i|
       @l3_transform = @char_key_l3.fetch(i)
       print "#{@l3_transform.join}"
     end 
     print "\n"
   end
+
+  #def combine_all_translated_text
+    
+
+  #end
 
   # def split_string_at_80_characters
   #   #subdivides string into 80 character segments within array
@@ -274,10 +283,10 @@ class Translator < NightWriter
 
 end
 
-translator = Translator.new
+#translator = Translator.new
 #translator.split_string_at_80_characters
-translator.translate_text_to_braille_l1
-translator.translate_text_to_braille_l2
-translator.translate_text_to_braille_l3
+#translator.translate_text_to_braille_l1
+#translator.translate_text_to_braille_l2
+#translator.translate_text_to_braille_l3
 
 

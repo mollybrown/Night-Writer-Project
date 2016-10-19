@@ -1,8 +1,8 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 
-require './night_writer.rb'
-require './translator.rb'
+require './test/night_writer.rb'
+require './test/translator.rb'
 
 class TranslatorTest < Minitest::Test
   def test_it_exists

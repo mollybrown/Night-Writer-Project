@@ -1,4 +1,4 @@
-require './night_writer.rb'
+require './lib/night_writer.rb'
 
 class Runner < NightWriter
 
