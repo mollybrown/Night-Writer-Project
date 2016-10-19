@@ -4,10 +4,13 @@ require 'pry'
 class Translator       
 
   def initialize
-    #@dictionary = ConversionDictionary.new
+    #@dictionary = ConversionDictionary.new.dict
     @braille_line_1 = []
     @braille_line_2 = []
     @braille_line_3 = []
+    l1_braille = []
+    l2_braille = []
+    l3_braille = []
     @char_key_l1 = { 
     "A" => ["..0."],
     "B" => ["..0."],
@@ -205,7 +208,7 @@ class Translator
     ["...0","..",".0"] => "I",
     ["...0","..",".0"] => "J",
     ["..0.","..",".0"] => "K",
-    ["..0.","..",".0"] => "L",
+    ["..0.","....","...0"] => "L",
     ["..00","..",".0"] => "M",
     ["..00","..",".0"] => "N",
     ["..0.","..",".0"] => "O",
@@ -253,7 +256,8 @@ class Translator
     incoming_text.chomp.each_char do |i|
       @l1_transform = @char_key_l1.fetch(i)
       @braille_line_1 << @l1_transform
-    end 
+    end
+    @braille_line_1.join 
   end
 
   def translate_text_to_braille_l2(incoming_text)
@@ -261,6 +265,7 @@ class Translator
       @l2_transform = @char_key_l2.fetch(i)
       @braille_line_2 << @l2_transform
     end
+    @braille_line_2.join
   end
 
   def translate_text_to_braille_l3(incoming_text)
@@ -268,17 +273,12 @@ class Translator
       @l3_transform = @char_key_l3.fetch(i)
       @braille_line_3 << @l3_transform
     end
+    @braille_line_3.join
   end
 
   def combine_all_translated_text
     @translated_text = @braille_line_1.join + ("\n") + @braille_line_2.join + ("\n") + @braille_line_3.join
   end
-
-  def translate_braille_to_text(incoming_braille)
-    incoming_text.chomp.each_char do |i|
-        @braille_transform = @braille_key.fetch(i)
-    end
-end
 
   # def split_string_at_80_characters
   #   #subdivides string into 80 character segments within array
