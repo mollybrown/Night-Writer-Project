@@ -1,45 +1,45 @@
-require './lib/translator.rb'
+require './translator.rb'
+require 'pry'
 
-class NightWriter
+class NightReader
 
-	#attr_accessor :contents
-				  #:character_count
+	attr_accessor :incoming_text,
+								:translation, 
+								:braille,
+								:character_count
 
-	attr_reader :incoming_text
+	def initialize
+		@translation = Translator.new
+	end							
 
 	def file_reader
-		handle = File.open(ARGV[0], "r")
-		@incoming_text = handle.read
-		handle.close
+		text_reader = File.open(ARGV[0], "r")
+		@incoming_text = text_reader.read
+		text_reader.close
 	end
 
-	def translate_incoming_to_outgoing
-		translator = Translator.new
-		@l1_transform
-        @l2_transform
-        @l3_transform
-		translated_text = [@l1_transform, @l2_transform, @l3_transform]
+	# def translate_to_braille_l1
+	# 	translation.translate_text_to_braille_l1(@incoming_text)
+	# 	@braille = translation. #some translate method here
+	# 	write_braille
+	# end	
+
+	# def write_braille
+	# 	braille_writer = File.open(ARGV[1], 'w')
+	# 	braille_writer.write(@braille)
+	# end	
+
+	def character_counter
+		@character_count = @incoming_text.chomp.length
 	end
 
-	def file_writer
-		writer = File.open(ARGV[1], "w")
-		writer.write(translated_text)
-		writer.close
-	end
-
-	#def character_counter
-		#@character_count = @incoming_text.length #need class var to make it avaialble w/i seperate runner class
-		#puts @@character_count
-	#end
+	def output_message_to_terminal
+		puts "Created '#{ARGV[1]}' containing #{@character_count} characters."
+	end 
 
 end
 
-nw = NightWriter.new
-nw.file_reader
-nw.translate_incoming_to_outgoing
-nw.file_writer
-#nw.character_counter
-
-
-#enter in terminal: ruby night_writer.rb english.txt braille.txt
-#this will read english.txt, apply desired method, and write output in braille.txt
+night_reader = NightReader.new
+night_reader.file_reader
+night_reader.character_counter
+night_reader.output_message_to_terminal
