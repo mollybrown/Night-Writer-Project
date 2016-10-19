@@ -12,11 +12,11 @@ class NightReader
 		braille_reader = File.open(ARGV[0], "r")
 		@incoming_braille = braille_reader.read
 		braille_reader.close
-		print @incoming_braille
+		#p @incoming_braille
 	end
 
 	def translate_to_text_l1
-		@translation.translate_braille_to_text_l1(@incoming_braille)
+		@translation.translate_braille_to_text(@incoming_braille)
 	end	
 
 	# def translate_to_braille_l2
@@ -48,6 +48,7 @@ end
 
 night_reader = NightReader.new
 night_reader.file_reader
+night_reader.translate_to_text_l1
 # night_reader.character_counter
 # night_reader.output_message_to_terminal
 # night_reader.translate_to_braille_l1

@@ -1,25 +1,16 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 
-require './test/night_writer.rb'
-require './test/translator.rb'
+require '../lib/translator.rb'
 
 class TranslatorTest < Minitest::Test
-  def test_it_exists
-    assert TranslatorTest
-  end
+ def test_it_exists
+   assert TranslatorTest
+ end
 
-  def test_it_imports_contents_string
-  	skip
-    translator = Translator.new
-    contents = @@contents
-    assert_kind_of String, contents
-  end
-
-  def test_it_puts_zero_index_of_key_for_contents
-  	translator = Translator.new
-  	braille = translator.translate_text_to_braille
-  	assert kind_of String, braille
-  end
-  
+ def test_it_translates_l1_to_braille
+   line_1 = Translator.new
+   assert_equal "0.0.00", line_1.translate_text_to_braille_l1("abc")
+ end
+ 
 end
