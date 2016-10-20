@@ -9,14 +9,16 @@ class NightWriteTest < Minitest::Test
     assert NightWriteTest
   end
 
-  def test_it_reads_english_txt
-    read = NightWriter.new
-    assert_equal "Lorem ipsum dolor.", read.file_reader(english.txt)
+  def test_it_reads_a_file_and_stores_contents
+    file = NightWriter.new("english.txt", "r")
+    contents = file.read
+    assert contents != nil
   end
 
-  def test_it_writes_braille_to_braille_txt
-    write = NightWriter.new
-    assert_equal "", write.write_braille(braille.txt)
+  def test_it_writes_to_braille_txt
+    file = NightWriter.new("braille.txt", "w")
+    contents = file.write
+    assert contents != nil
   end
 
   def test_it_counts_incoming_characters
