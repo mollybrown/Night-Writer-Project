@@ -2,7 +2,6 @@
 require './translator.rb'
 require 'pry'
 
-# Translate English text to Braille
 class NightWriter
 
 	def initialize
@@ -16,15 +15,15 @@ class NightWriter
 	end
 
 	def translate_to_braille_l1
-		@translation.translate_text_to_braille_l1(@incoming_text)
+		@translation.translate_text_to_braille_l1(@incoming_text.downcase)
 	end	
 
 	def translate_to_braille_l2
-		@translation.translate_text_to_braille_l2(@incoming_text)
+		@translation.translate_text_to_braille_l2(@incoming_text.downcase)
 	end	
 
 	def translate_to_braille_l3
-		@translation.translate_text_to_braille_l3(@incoming_text)
+		@translation.translate_text_to_braille_l3(@incoming_text.downcase)
 	end
 
 	def get_braille
