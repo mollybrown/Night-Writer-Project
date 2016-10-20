@@ -1,5 +1,5 @@
 
-require './translator.rb'
+#require './translator.rb'
 require 'pry'
 
 # Translate English text to Braille
